@@ -3,7 +3,7 @@ THREAT INTELLIGENCE ANALYSIS REPORT
 ======================================================================
 Feed: Daily Threat Intelligence
 Date: 2024-12-01
-Generated: 2026-02-15 17:35:43
+Generated: 2026-02-15 19:58:53
 
 ----------------------------------------------------------------------
 SUMMARY STATISTICS
