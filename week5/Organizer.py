@@ -4,12 +4,13 @@ import json
 from collections import Counter
 
 CATEGORIES = {
-    "Images": ["jpg", "jpeg", "png", "gif", "bmp", "tiff", "svg"],
+     "Images": ["jpg", "jpeg", "png", "gif", "bmp", "tiff", "svg"],
     "Documents": ["pdf", "doc", "docx", "txt", "ppt", "pptx", "xls", "xlsx"],
     "Audio": ["mp3", "wav", "aac", "flac", "ogg", "m4a"],
     "Video": ["mp4", "mov", "avi", "mkv", "wmv"],
     "Archives": ["zip", "rar", "7z", "tar", "gz"],
-    "Code": ["py", "js", "html", "css", "java", "c", "cpp", "rb", "php"]
+    "Executables": ["sh", "exe"],
+    "Other": ["weird.FILE",],
 }
 
 def categorize_extension(ext):

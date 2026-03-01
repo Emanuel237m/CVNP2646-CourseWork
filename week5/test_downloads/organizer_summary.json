@@ -1,73 +1,77 @@
 {
-    "total_files": 18,
+    "total_files": 19,
     "extensions": {
         "gz": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "zip": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "svg": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "rar": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "exe": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "no_extension": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "txt": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "jpg": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "pptx": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "md": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "pdf": {
             "count": 2,
-            "percentage": 11.11
+            "percentage": 10.53
         },
         "png": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "sh": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "msi": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "mp3": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
+        },
+        "py": {
+            "count": 1,
+            "percentage": 5.26
         },
         "mp4": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         },
         "file": {
             "count": 1,
-            "percentage": 5.56
+            "percentage": 5.26
         }
     }
 }
