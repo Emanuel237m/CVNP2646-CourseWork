@@ -1,24 +1,23 @@
 FILE ORGANIZER SUMMARY
 =======================
 
-Total files processed: 19
+Total files processed: 18
 
 Extension distribution:
- - gz: 5.26% (1)
- - zip: 5.26% (1)
- - svg: 5.26% (1)
- - rar: 5.26% (1)
- - exe: 5.26% (1)
- - no_extension: 5.26% (1)
- - txt: 5.26% (1)
- - jpg: 5.26% (1)
- - pptx: 5.26% (1)
- - md: 5.26% (1)
- - pdf: 10.53% (2)
- - png: 5.26% (1)
- - sh: 5.26% (1)
- - msi: 5.26% (1)
- - mp3: 5.26% (1)
- - py: 5.26% (1)
- - mp4: 5.26% (1)
- - file: 5.26% (1)
+ - gz: 5.56% (1)
+ - zip: 5.56% (1)
+ - svg: 5.56% (1)
+ - rar: 5.56% (1)
+ - exe: 5.56% (1)
+ - no_extension: 5.56% (1)
+ - txt: 5.56% (1)
+ - jpg: 5.56% (1)
+ - pptx: 5.56% (1)
+ - md: 5.56% (1)
+ - pdf: 11.11% (2)
+ - png: 5.56% (1)
+ - sh: 5.56% (1)
+ - msi: 5.56% (1)
+ - mp3: 5.56% (1)
+ - mp4: 5.56% (1)
+ - file: 5.56% (1)

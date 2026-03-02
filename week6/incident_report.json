@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "generated_at_utc": "2026-03-02T03:38:15Z",
+    "analyst": "Akingbasote, Emmanuel O",
+    "tool": "Authentication Log Scanner (Steps 1\u20136)",
+    "version": "1.4.0"
+  },
+  "summary": {
+    "considered_lines": 23,
+    "total_events": 17,
+    "malformed": 4,
+    "success_count": 4,
+    "fail_count": 13,
+    "failure_rate": 0.764706
+  },
+  "top_targeted_users": [
+    {
+      "value": "admin",
+      "count": 8
+    },
+    {
+      "value": "root",
+      "count": 3
+    },
+    {
+      "value": "administrator",
+      "count": 2
+    }
+  ],
+  "top_attacking_ips": [
+    {
+      "value": "198.51.100.45",
+      "count": 7
+    },
+    {
+      "value": "203.0.113.89",
+      "count": 3
+    },
+    {
+      "value": "192.0.2.15",
+      "count": 3
+    }
+  ]
+}
