@@ -1,0 +1,16 @@
+{
+  "plan_name": 123,  
+  "version": "",
+
+  "sources": "not-a-list",
+
+  "destination": {
+    "base_path": "",
+    "create_timestamped_folders": "yes"
+  },
+
+  "options": {
+    "verify_backups": "true",
+    "max_file_size_mb": "large"
+  }
+}

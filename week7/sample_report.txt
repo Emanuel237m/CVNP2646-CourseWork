@@ -1,0 +1,43 @@
+======================================================================
+              BACKUP PLAN DRY-RUN SIMULATION
+======================================================================
+Plan: Security Logs Daily Backup
+Mode: DRY-RUN
+Timestamp: 2026-03-28T20:25:17
+
+----------------------------------------------------------------------
+SUMMARY STATISTICS
+----------------------------------------------------------------------
+Total Sources:     2
+Total Files:       19
+Total Size:        642.4 MB
+Destination:       /backup/security_logs/2026-03-28_202517
+
+----------------------------------------------------------------------
+SOURCE 1: Firewall Logs
+----------------------------------------------------------------------
+Path: /var/log/firewall
+Files Found: 11
+
+Sample Files:
+  → firewall_logs_4821.log (42.1 MB)
+  → firewall_logs_9344.txt (87.5 MB)
+  → firewall_logs_1267.log (15.8 MB)
+  ... and 8 more files
+
+----------------------------------------------------------------------
+SOURCE 2: IDS Alerts
+----------------------------------------------------------------------
+Path: /var/log/suricata
+Files Found: 8
+
+Sample Files:
+  → fast.log (5.3 MB)
+  → eve.json (108.4 MB)
+  → fast.log (77.6 MB)
+  ... and 5 more files
+
+======================================================================
+This was a DRY-RUN simulation. No files were copied.
+To execute actual backup, run with --execute flag.
+======================================================================
