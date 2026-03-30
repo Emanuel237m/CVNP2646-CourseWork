@@ -1,0 +1,48 @@
+{
+    "generated_at": "2026-03-29T19:16:28.952133",
+    "total_iocs": 4,
+    "events": [
+        {
+            "ioc_type": "ip",
+            "ioc_value": "203.0.113.10",
+            "siem_severity": "critical",
+            "confidence_score": 95.0,
+            "seen_first": "2026-03-20T08:15:00Z",
+            "vendors": [
+                "VendorA"
+            ]
+        },
+        {
+            "ioc_type": "domain",
+            "ioc_value": "malicious-update.net",
+            "siem_severity": "high",
+            "confidence_score": 91.0,
+            "seen_first": "2026-03-19T10:30:00Z",
+            "vendors": [
+                "VendorC",
+                "VendorA"
+            ]
+        },
+        {
+            "ioc_type": "domain",
+            "ioc_value": "dangerous-login.com",
+            "siem_severity": "high",
+            "confidence_score": 93.0,
+            "seen_first": "2026-03-25T09:10:00Z",
+            "vendors": [
+                "VendorC",
+                "VendorA"
+            ]
+        },
+        {
+            "ioc_type": "ip",
+            "ioc_value": "203.0.113.200",
+            "siem_severity": "high",
+            "confidence_score": 89.0,
+            "seen_first": "2026-03-21T15:05:00Z",
+            "vendors": [
+                "VendorC"
+            ]
+        }
+    ]
+}

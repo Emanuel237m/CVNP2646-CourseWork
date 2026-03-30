@@ -1,0 +1,54 @@
+{
+  "vendor": "VendorB",
+  "generated_at": "2026-03-29T16:00:00Z",
+  "items": [
+    {
+      "uid": "B-101",
+      "indicator_type": "ip",
+      "indicator_value": "203.0.113.10",
+      "score": 92,
+      "severity": "critical",
+      "seen": "2026-03-21T10:00:00Z"
+    },
+    {
+      "uid": "B-102",
+      "indicator_type": "domain",
+      "indicator_value": "phishing-panel.net",
+      "score": 87,
+      "severity": "high",
+      "seen": "2026-03-23T13:45:00Z"
+    },
+    {
+      "uid": "B-103",
+      "indicator_type": "url",
+      "indicator_value": "http://steal-credentials.org/login",
+      "score": 78,
+      "severity": "medium",
+      "seen": "2026-03-25T12:30:00Z"
+    },
+    {
+      "uid": "B-104",
+      "indicator_type": "hash",
+      "indicator_value": "c12d458e99af707173b39d73e56b95ee",
+      "score": 65,
+      "severity": "medium",
+      "seen": "2026-03-26T09:50:00Z"
+    },
+    {
+      "uid": "B-105",
+      "indicator_type": "ip",
+      "indicator_value": "192.0.2.44",
+      "score": 30,
+      "severity": "low",
+      "seen": "2026-03-24T17:10:00Z"
+    },
+    {
+      "uid": "B-106",
+      "indicator_type": "domain",
+      "score": 80,
+      "severity": "medium",
+      "seen": "2026-03-27T14:00:00Z"
+      // MISSING indicator_value → intentionally malformed for validation testing
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "provider": "VendorC",
+  "timestamp": "2026-03-29T16:05:00Z",
+  "data": [
+    {
+      "ref": "C-501",
+      "category": "domain",
+      "ioc": "malicious-update.net",
+      "confidence_score": 91,
+      "risk": "high",
+      "first_detected": "2026-03-19T10:30:00Z"
+    },
+    {
+      "ref": "C-502",
+      "category": "ip",
+      "ioc": "198.51.100.34",
+      "confidence_score": 84,
+      "risk": "medium",
+      "first_detected": "2026-03-22T08:40:00Z"
+    },
+    {
+      "ref": "C-503",
+      "category": "hash",
+      "ioc": "fa1d4b2e90c4d55fbc8eb9c437a1e332",
+      "confidence_score": 67,
+      "risk": "medium",
+      "first_detected": "2026-03-26T06:50:00Z"
+    },
+    {
+      "ref": "C-504",
+      "category": "url",
+      "ioc": "http://compromised-storage.net/files",
+      "confidence_score": 72,
+      "risk": "medium",
+      "first_detected": "2026-03-23T12:20:00Z"
+    },
+    {
+      "ref": "C-505",
+      "category": "ip",
+      "ioc": "203.0.113.200",
+      "confidence_score": 89,
+      "risk": "high",
+      "first_detected": "2026-03-21T15:05:00Z"
+    },
+    {
+      "ref": "C-506",
+      "category": "domain",
+      "ioc": "dangerous-login.com",
+      "confidence_score": 93,
+      "risk": "high",
+      "first_detected": "2026-03-25T09:10:00Z"
+    }
+  ]
+}
