@@ -1,0 +1,56 @@
+================================================================
+          WEEKLY PATCH COMPLIANCE SUMMARY REPORT
+================================================================
+Generated: 2026-03-30 21:45:19
+
+EXECUTIVE SUMMARY
+----------------------------------------------------------------
+Total Systems Analyzed:        20
+High-Risk Systems Identified:  9 (45.0%)
+Critical Priority Systems:     2
+Immediate Action Required:     2 systems >90 days unpatched
+
+RISK DISTRIBUTION
+----------------------------------------------------------------
+Critical (>=70 points):        2 systems
+High (50-69 points):           7 systems
+Medium (25-49 points):         10 systems
+Low (<25 points):              1 systems
+
+TOP 5 HIGHEST RISK SYSTEMS
+----------------------------------------------------------------
+1. FIN-WKS-001 (Score: 75, Critical)
+   Last Patched: 44 days ago | Production | Tags: pci-scope, internet-facing
+
+2. EXEC-WKS-002 (Score: 75, Critical)
+   Last Patched: 49 days ago | Production | Tags: vip, pci-scope
+
+3. IT-ADM-001 (Score: 65, High)
+   Last Patched: 37 days ago | Production | Tags: privileged-access, domain-joined
+
+4. IT-SEC-001 (Score: 65, High)
+   Last Patched: 36 days ago | Production | Tags: privileged-access, edr-managed
+
+5. IT-SEC-002 (Score: 65, High)
+   Last Patched: 41 days ago | Production | Tags: siem-forwarder, linux
+
+RECOMMENDED ACTIONS
+----------------------------------------------------------------
+IMMEDIATE (Next 48 hours):
+• Patch critical-risk systems (internet-facing and PCI scope)
+• Review emergency change control procedures
+
+THIS WEEK (Next 7 days):
+• Patch production high-risk servers
+• Test patches in staging before production rollout
+
+THIS MONTH (Next 30 days):
+• Automate patch deployment for dev/test systems
+• Update patch management SOPs and documentation
+
+COMPLIANCE NOTES
+----------------------------------------------------------------
+CIS Control 7.3: Critical vulnerabilities must be remediated within 15 days.
+PCI-DSS 6.2: PCI-scoped systems must be patched within 30 days of release.
+HIPAA §164.308(a)(1)(ii)(B): Requires regular security review and updates.
+================================================================

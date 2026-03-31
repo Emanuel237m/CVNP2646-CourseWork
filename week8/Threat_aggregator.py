@@ -152,7 +152,7 @@ if error_count:
 
 
 # -------------------------------------------------------
-# PHASE 5 — DEDUPLICATION
+# PHASE 5 — DEDUPLICATIONa
 # -------------------------------------------------------
 def deduplicate_indicators(indicators):
     """

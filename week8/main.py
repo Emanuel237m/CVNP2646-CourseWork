@@ -103,10 +103,16 @@ def save_text_report(text, filename="summary_report.txt"):
         f.write(text)
     print(f"✅ Text report saved to: {filename}")
 
+def save_firewall_blocklist(firewall_output, filename="firewall_blocklist.json"):
+    with open(filename, "w") as f:
+        json.dump(firewall_output, f, indent=4)
+    print(f"✅ Firewall blocklist saved to: {filename}")
+
+
 # Actually save the files
 save_siem_feed(siem_output)
 save_text_report(text_report)
-
+save_firewall_blocklist(firewall_output)
 
 # =====================================================
 # PHASE 8 — STATISTICS
@@ -129,3 +135,4 @@ stats = generate_statistics(
 print("\n=== Statistics Summary ===")
 for k, v in stats.items():
     print(f"{k}: {v}")
+    

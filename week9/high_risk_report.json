@@ -1,0 +1,131 @@
+{
+    "report_date": "2026-03-30T21:41:30.915624",
+    "report_type": "High Risk Host Assessment",
+    "total_hosts": 20,
+    "total_high_risk": 9,
+    "risk_distribution": {
+        "critical": 2,
+        "high": 7,
+        "medium": 10,
+        "low": 1
+    },
+    "high_risk_hosts": [
+        {
+            "hostname": "FIN-WKS-001",
+            "ip_address": "10.10.10.11",
+            "risk_score": 75,
+            "risk_level": "critical",
+            "days_since_patch": 44,
+            "criticality": "high",
+            "environment": "production",
+            "tags": [
+                "pci-scope",
+                "internet-facing"
+            ]
+        },
+        {
+            "hostname": "EXEC-WKS-002",
+            "ip_address": "10.10.90.12",
+            "risk_score": 75,
+            "risk_level": "critical",
+            "days_since_patch": 49,
+            "criticality": "critical",
+            "environment": "production",
+            "tags": [
+                "vip",
+                "pci-scope"
+            ]
+        },
+        {
+            "hostname": "IT-ADM-001",
+            "ip_address": "10.10.60.10",
+            "risk_score": 65,
+            "risk_level": "high",
+            "days_since_patch": 37,
+            "criticality": "critical",
+            "environment": "production",
+            "tags": [
+                "privileged-access",
+                "domain-joined"
+            ]
+        },
+        {
+            "hostname": "IT-SEC-001",
+            "ip_address": "10.10.60.20",
+            "risk_score": 65,
+            "risk_level": "high",
+            "days_since_patch": 36,
+            "criticality": "critical",
+            "environment": "production",
+            "tags": [
+                "privileged-access",
+                "edr-managed"
+            ]
+        },
+        {
+            "hostname": "IT-SEC-002",
+            "ip_address": "10.10.60.21",
+            "risk_score": 65,
+            "risk_level": "high",
+            "days_since_patch": 41,
+            "criticality": "critical",
+            "environment": "production",
+            "tags": [
+                "siem-forwarder",
+                "linux"
+            ]
+        },
+        {
+            "hostname": "EXEC-WKS-001",
+            "ip_address": "10.10.90.11",
+            "risk_score": 65,
+            "risk_level": "high",
+            "days_since_patch": 35,
+            "criticality": "critical",
+            "environment": "production",
+            "tags": [
+                "vip",
+                "encrypted"
+            ]
+        },
+        {
+            "hostname": "FIN-WKS-002",
+            "ip_address": "10.10.10.12",
+            "risk_score": 60,
+            "risk_level": "high",
+            "days_since_patch": 60,
+            "criticality": "high",
+            "environment": "production",
+            "tags": [
+                "pci-scope",
+                "encrypted"
+            ]
+        },
+        {
+            "hostname": "ENG-WKS-001",
+            "ip_address": "10.10.30.21",
+            "risk_score": 50,
+            "risk_level": "high",
+            "days_since_patch": 48,
+            "criticality": "high",
+            "environment": "production",
+            "tags": [
+                "developer-tools",
+                "source-code-access"
+            ]
+        },
+        {
+            "hostname": "ENG-WKS-002",
+            "ip_address": "10.10.30.22",
+            "risk_score": 50,
+            "risk_level": "high",
+            "days_since_patch": 42,
+            "criticality": "high",
+            "environment": "production",
+            "tags": [
+                "linux",
+                "container-host"
+            ]
+        }
+    ]
+}

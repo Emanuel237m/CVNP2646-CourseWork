@@ -1,0 +1,44 @@
+{
+    "generated_at": "2026-03-29T20:16:18.949540",
+    "total_entries": 4,
+    "blocklist": [
+        {
+            "address": "203.0.113.10",
+            "action": "block",
+            "priority": "high",
+            "reason": "Threat level: critical, Confidence: 95.0%",
+            "sources": [
+                "VendorA"
+            ]
+        },
+        {
+            "address": "malicious-update.net",
+            "action": "block",
+            "priority": "medium",
+            "reason": "Threat level: high, Confidence: 91.0%",
+            "sources": [
+                "VendorC",
+                "VendorA"
+            ]
+        },
+        {
+            "address": "dangerous-login.com",
+            "action": "block",
+            "priority": "medium",
+            "reason": "Threat level: high, Confidence: 93.0%",
+            "sources": [
+                "VendorC",
+                "VendorA"
+            ]
+        },
+        {
+            "address": "203.0.113.200",
+            "action": "block",
+            "priority": "medium",
+            "reason": "Threat level: high, Confidence: 89.0%",
+            "sources": [
+                "VendorC"
+            ]
+        }
+    ]
+}

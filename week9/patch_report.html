@@ -1,0 +1,298 @@
+<html>
+<head>
+<title>Patch Compliance Report</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        p {
+            text-align: center;
+            color: #444;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #444;
+            text-align: left;
+        }
+        th {
+            background-color: #222;
+            color: white;
+        }
+        /* Row color coding by risk level */
+        .critical { background-color: #ff4c4c; }
+        .high { background-color: #ffa64d; }
+        .medium { background-color: #ffeb99; }
+        .low { background-color: #b3ffb3; }
+    </style>
+    
+</head>
+<body>
+<h2>Patch Compliance & Risk Assessment Report</h2>
+<p>Generated: 2026-03-30 23:22:27</p>
+<table>
+
+        <tr>
+            <th>Hostname</th>
+            <th>IP Address</th>
+            <th>Risk Score</th>
+            <th>Risk Level</th>
+            <th>Days Since Patch</th>
+            <th>Criticality</th>
+            <th>Environment</th>
+            <th>Tags</th>
+        </tr>
+    
+
+        <tr class="critical">
+            <td>FIN-WKS-001</td>
+            <td>10.10.10.11</td>
+            <td>75</td>
+            <td>critical</td>
+            <td>44</td>
+            <td>high</td>
+            <td>production</td>
+            <td>pci-scope, internet-facing</td>
+        </tr>
+        
+
+        <tr class="high">
+            <td>FIN-WKS-002</td>
+            <td>10.10.10.12</td>
+            <td>60</td>
+            <td>high</td>
+            <td>60</td>
+            <td>high</td>
+            <td>production</td>
+            <td>pci-scope, encrypted</td>
+        </tr>
+        
+
+        <tr class="medium">
+            <td>HR-WKS-001</td>
+            <td>10.10.20.11</td>
+            <td>35</td>
+            <td>medium</td>
+            <td>38</td>
+            <td>medium</td>
+            <td>production</td>
+            <td>sensitive-data, vpn-required</td>
+        </tr>
+        
+
+        <tr class="medium">
+            <td>HR-WKS-002</td>
+            <td>10.10.20.12</td>
+            <td>35</td>
+            <td>medium</td>
+            <td>40</td>
+            <td>medium</td>
+            <td>production</td>
+            <td>encrypted, remote-user</td>
+        </tr>
+        
+
+        <tr class="high">
+            <td>ENG-WKS-001</td>
+            <td>10.10.30.21</td>
+            <td>50</td>
+            <td>high</td>
+            <td>48</td>
+            <td>high</td>
+            <td>production</td>
+            <td>developer-tools, source-code-access</td>
+        </tr>
+        
+
+        <tr class="high">
+            <td>ENG-WKS-002</td>
+            <td>10.10.30.22</td>
+            <td>50</td>
+            <td>high</td>
+            <td>42</td>
+            <td>high</td>
+            <td>production</td>
+            <td>linux, container-host</td>
+        </tr>
+        
+
+        <tr class="low">
+            <td>ENG-WKS-003</td>
+            <td>10.10.30.23</td>
+            <td>23</td>
+            <td>low</td>
+            <td>47</td>
+            <td>medium</td>
+            <td>development</td>
+            <td>developer-tools, remote-user</td>
+        </tr>
+        
+
+        <tr class="medium">
+            <td>MKT-WKS-001</td>
+            <td>10.10.40.11</td>
+            <td>30</td>
+            <td>medium</td>
+            <td>50</td>
+            <td>low</td>
+            <td>production</td>
+            <td>design-suite, cloud-only</td>
+        </tr>
+        
+
+        <tr class="medium">
+            <td>MKT-WKS-002</td>
+            <td>10.10.40.12</td>
+            <td>30</td>
+            <td>medium</td>
+            <td>51</td>
+            <td>low</td>
+            <td>production</td>
+            <td>design-suite, remote-user</td>
+        </tr>
+        
+
+        <tr class="medium">
+            <td>SALES-WKS-001</td>
+            <td>10.10.50.11</td>
+            <td>35</td>
+            <td>medium</td>
+            <td>39</td>
+            <td>medium</td>
+            <td>production</td>
+            <td>crm-access, remote-user</td>
+        </tr>
+        
+
+        <tr class="medium">
+            <td>SALES-WKS-002</td>
+            <td>10.10.50.12</td>
+            <td>45</td>
+            <td>medium</td>
+            <td>64</td>
+            <td>medium</td>
+            <td>production</td>
+            <td>crm-access, vpn-required</td>
+        </tr>
+        
+
+        <tr class="high">
+            <td>IT-ADM-001</td>
+            <td>10.10.60.10</td>
+            <td>65</td>
+            <td>high</td>
+            <td>37</td>
+            <td>critical</td>
+            <td>production</td>
+            <td>privileged-access, domain-joined</td>
+        </tr>
+        
+
+        <tr class="high">
+            <td>IT-SEC-001</td>
+            <td>10.10.60.20</td>
+            <td>65</td>
+            <td>high</td>
+            <td>36</td>
+            <td>critical</td>
+            <td>production</td>
+            <td>privileged-access, edr-managed</td>
+        </tr>
+        
+
+        <tr class="high">
+            <td>IT-SEC-002</td>
+            <td>10.10.60.21</td>
+            <td>65</td>
+            <td>high</td>
+            <td>41</td>
+            <td>critical</td>
+            <td>production</td>
+            <td>siem-forwarder, linux</td>
+        </tr>
+        
+
+        <tr class="medium">
+            <td>OPS-WKS-001</td>
+            <td>10.10.70.11</td>
+            <td>35</td>
+            <td>medium</td>
+            <td>46</td>
+            <td>medium</td>
+            <td>production</td>
+            <td>erp-access, shared-device</td>
+        </tr>
+        
+
+        <tr class="medium">
+            <td>OPS-WKS-002</td>
+            <td>10.10.70.12</td>
+            <td>28</td>
+            <td>medium</td>
+            <td>59</td>
+            <td>medium</td>
+            <td>staging</td>
+            <td>erp-access, test-device</td>
+        </tr>
+        
+
+        <tr class="medium">
+            <td>RND-WKS-001</td>
+            <td>10.10.80.11</td>
+            <td>38</td>
+            <td>medium</td>
+            <td>43</td>
+            <td>high</td>
+            <td>development</td>
+            <td>prototype, lab-network</td>
+        </tr>
+        
+
+        <tr class="medium">
+            <td>RND-WKS-002</td>
+            <td>10.10.80.12</td>
+            <td>38</td>
+            <td>medium</td>
+            <td>45</td>
+            <td>high</td>
+            <td>development</td>
+            <td>prototype, gpu-enabled</td>
+        </tr>
+        
+
+        <tr class="high">
+            <td>EXEC-WKS-001</td>
+            <td>10.10.90.11</td>
+            <td>65</td>
+            <td>high</td>
+            <td>35</td>
+            <td>critical</td>
+            <td>production</td>
+            <td>vip, encrypted</td>
+        </tr>
+        
+
+        <tr class="critical">
+            <td>EXEC-WKS-002</td>
+            <td>10.10.90.12</td>
+            <td>75</td>
+            <td>critical</td>
+            <td>49</td>
+            <td>critical</td>
+            <td>production</td>
+            <td>vip, pci-scope</td>
+        </tr>
+        
+</table>
+</body>
+</html>
