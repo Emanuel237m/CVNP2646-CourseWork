@@ -1,0 +1,14 @@
+================================================================================
+USER ACCOUNT & PERMISSIONS AUDIT REPORT
+================================================================================
+CRITICAL | asmith | Disabled account has 2 roles: hr_manager, admin
+HIGH | asmith | HR user has admin role admin
+HIGH | ijohnson | Finance user has admin role billing_admin
+MEDIUM | jdoe | Last login was 492 days ago
+MEDIUM | bwilliams | Last login was 672 days ago
+MEDIUM | cjones | Last login was 449 days ago
+MEDIUM | emartin | Last login was 470 days ago
+MEDIUM | flee | Last login was 427 days ago
+MEDIUM | gpatel | Last login was 699 days ago
+MEDIUM | hnguyen | Last login was 399 days ago
+MEDIUM | ijohnson | Last login was 764 days ago

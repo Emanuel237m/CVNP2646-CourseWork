@@ -1,0 +1,12 @@
+user_id,username,violation_type,severity,details
+U002,asmith,disabled_with_roles,CRITICAL,"Disabled account has 2 roles: hr_manager, admin"
+U002,asmith,unauthorized_admin,HIGH,HR user has admin role admin
+U010,ijohnson,unauthorized_admin,HIGH,Finance user has admin role billing_admin
+U001,jdoe,stale_account,MEDIUM,Last login was 492 days ago
+U003,bwilliams,stale_account,MEDIUM,Last login was 672 days ago
+U004,cjones,stale_account,MEDIUM,Last login was 449 days ago
+U006,emartin,stale_account,MEDIUM,Last login was 470 days ago
+U007,flee,stale_account,MEDIUM,Last login was 427 days ago
+U008,gpatel,stale_account,MEDIUM,Last login was 699 days ago
+U009,hnguyen,stale_account,MEDIUM,Last login was 399 days ago
+U010,ijohnson,stale_account,MEDIUM,Last login was 764 days ago

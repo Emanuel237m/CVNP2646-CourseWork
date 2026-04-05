@@ -1,0 +1,100 @@
+{
+  "audit_metadata": {
+    "timestamp": "2026-04-04T19:31:35.868410",
+    "total_users_audited": 10,
+    "total_roles_reviewed": 15,
+    "total_violations": 11,
+    "auditor": "IAM Audit System v1.0"
+  },
+  "violation_summary": {
+    "by_severity": {
+      "CRITICAL": 1,
+      "HIGH": 2,
+      "MEDIUM": 8
+    },
+    "by_type": {
+      "disabled_with_roles": 1,
+      "unauthorized_admin": 2,
+      "stale_account": 8
+    }
+  },
+  "all_violations": [
+    {
+      "user_id": "U002",
+      "username": "asmith",
+      "violation_type": "disabled_with_roles",
+      "severity": "CRITICAL",
+      "details": "Disabled account has 2 roles: hr_manager, admin"
+    },
+    {
+      "user_id": "U002",
+      "username": "asmith",
+      "violation_type": "unauthorized_admin",
+      "severity": "HIGH",
+      "details": "HR user has admin role admin"
+    },
+    {
+      "user_id": "U010",
+      "username": "ijohnson",
+      "violation_type": "unauthorized_admin",
+      "severity": "HIGH",
+      "details": "Finance user has admin role billing_admin"
+    },
+    {
+      "user_id": "U001",
+      "username": "jdoe",
+      "violation_type": "stale_account",
+      "severity": "MEDIUM",
+      "details": "Last login was 492 days ago"
+    },
+    {
+      "user_id": "U003",
+      "username": "bwilliams",
+      "violation_type": "stale_account",
+      "severity": "MEDIUM",
+      "details": "Last login was 672 days ago"
+    },
+    {
+      "user_id": "U004",
+      "username": "cjones",
+      "violation_type": "stale_account",
+      "severity": "MEDIUM",
+      "details": "Last login was 449 days ago"
+    },
+    {
+      "user_id": "U006",
+      "username": "emartin",
+      "violation_type": "stale_account",
+      "severity": "MEDIUM",
+      "details": "Last login was 470 days ago"
+    },
+    {
+      "user_id": "U007",
+      "username": "flee",
+      "violation_type": "stale_account",
+      "severity": "MEDIUM",
+      "details": "Last login was 427 days ago"
+    },
+    {
+      "user_id": "U008",
+      "username": "gpatel",
+      "violation_type": "stale_account",
+      "severity": "MEDIUM",
+      "details": "Last login was 699 days ago"
+    },
+    {
+      "user_id": "U009",
+      "username": "hnguyen",
+      "violation_type": "stale_account",
+      "severity": "MEDIUM",
+      "details": "Last login was 399 days ago"
+    },
+    {
+      "user_id": "U010",
+      "username": "ijohnson",
+      "violation_type": "stale_account",
+      "severity": "MEDIUM",
+      "details": "Last login was 764 days ago"
+    }
+  ]
+}
