@@ -206,3 +206,50 @@ def analyze_traffic(packets: list, config: NetworkConfig) -> dict:
         "port_scans": port_scans,
         "syn_floods": syn_floods,
     }    
+def main(args) -> int:
+    """
+    Main orchestration function.
+
+    This function coordinates file loading, traffic analysis,
+    and result reporting. It does not contain detection logic
+    or parsing logic itself.
+
+    Args:
+        args: An object containing input parameters. This will
+              be an argparse.Namespace in later stages.
+
+    Returns:
+        Integer exit code:
+            0 - Success
+            1 - User error (e.g. bad input)
+            2 - Unexpected program error
+    """
+    try:
+        # Build configuration from arguments
+        config = NetworkConfig(
+            port_scan_threshold=getattr(args, "port_scan_threshold", None),
+            syn_flood_threshold=getattr(args, "syn_flood_threshold", None)
+        )
+
+        # Load and parse traffic data
+        packets = load_traffic_log(args.input_file)
+
+        # Analyze traffic
+        results = analyze_traffic(packets, config)
+
+        # User-facing summary (temporary; replaced by logging later)
+        print("Analysis complete")
+        print(f"Total packets analyzed: {results['total_packets']}")
+        print(f"Port scans detected: {len(results['port_scans'])}")
+        print(f"SYN floods detected: {len(results['syn_floods'])}")
+
+        return 0
+
+    except (FileNotFoundError, PermissionError, ValueError) as exc:
+        print(f"ERROR: {exc}")
+        return 1
+
+    except Exception as exc:
+        print(f"FATAL ERROR: {exc}")
+        return 2
+    
