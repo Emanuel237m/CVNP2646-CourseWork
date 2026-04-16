@@ -38,3 +38,38 @@ class NetworkConfig:
             if syn_flood_threshold is not None
             else self.DEFAULT_SYN_FLOOD_THRESHOLD
         )
+def parse_packet_line(line: str) -> dict:
+    """
+    Parse a single CSV packet log line into a structured dictionary.
+
+    Expected format:
+        src_ip,dst_ip,src_port,dst_port,protocol,flags
+
+    Args:
+        line: Raw CSV line from traffic log.
+
+    Returns:
+        Dictionary containing parsed packet fields.
+
+    Raises:
+        ValueError: If the line is malformed or contains invalid values.
+    """
+    parts = [field.strip() for field in line.split(",")]
+
+    if len(parts) != 6:
+        raise ValueError("Invalid packet format: expected 6 fields")
+
+    src_ip, dst_ip, src_port, dst_port, protocol, flags = parts
+
+    try:
+        return {
+            "src_ip": src_ip,
+            "dst_ip": dst_ip,
+            "src_port": int(src_port),
+            "dst_port": int(dst_port),
+            "protocol": protocol.upper(),
+            "flags": flags.upper(),
+        }
+    except ValueError as exc:
+        raise ValueError("Port values must be numeric") from exc
+    
