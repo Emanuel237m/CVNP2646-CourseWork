@@ -1,3 +1,51 @@
+import logging
+def setup_logging(
+    log_file: str = "network_monitor.log",
+    log_level: str = "INFO"
+) -> logging.Logger:
+    """
+    Configure application-wide logging.
+
+    Creates both file and console log handlers with different
+    verbosity levels for forensic analysis and user visibility.
+
+    Args:
+        log_file: Path to the log file.
+        log_level: Logging level for console output.
+
+    Returns:
+        Configured logger instance.
+    """
+    logger = logging.getLogger("network_monitor")
+
+    # Prevent duplicate handlers
+    if logger.handlers:
+        return logger
+
+    logger.setLevel(logging.DEBUG)
+
+    # File handler (always DEBUG)
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setLevel(logging.DEBUG)
+    file_formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+    file_handler.setFormatter(file_formatter)
+
+    # Console handler (user-selected level)
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(getattr(logging, log_level.upper()))
+    console_formatter = logging.Formatter(
+        "%(levelname)s: %(message)s"
+    )
+    console_handler.setFormatter(console_formatter)
+
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+
+    return logger
+
+
 class NetworkConfig:
     """
     Configuration container for network traffic analysis thresholds.
@@ -133,123 +181,109 @@ def detect_syn_flood(packets: list, src_ip: str, threshold: int) -> bool:
 def load_traffic_log(filepath: str) -> list:
     """
     Load and parse a network traffic log file.
-
-    This function is responsible ONLY for file I/O and parsing.
-    It does not perform any traffic analysis.
-
-    Args:
-        filepath: Path to the traffic log file.
-
-    Returns:
-        List of parsed packet dictionaries.
-
-    Raises:
-        FileNotFoundError: If the file does not exist.
-        PermissionError: If the file cannot be read.
-        ValueError: If a line in the file is malformed.
     """
+    logger = logging.getLogger("network_monitor")
     packets = []
+
+    logger.info("Loading traffic log: %s", filepath)
 
     with open(filepath, "r", encoding="utf-8") as file:
         for line_number, line in enumerate(file, start=1):
             line = line.strip()
 
-            # Skip blank lines safely
             if not line:
                 continue
 
             try:
                 packet = parse_packet_line(line)
                 packets.append(packet)
+                logger.debug(
+                    "Parsed packet: src=%s dst=%s",
+                    packet["src_ip"],
+                    packet["dst_ip"]
+                )
             except ValueError as exc:
-                raise ValueError(
-                    f"Error parsing line {line_number}: {exc}"
-                ) from exc
+                logger.error(
+                    "Parse error at line %d: %s",
+                    line_number,
+                    exc
+                )
+                raise
 
+    logger.info("Successfully loaded %d packets", len(packets))
     return packets
 def analyze_traffic(packets: list, config: NetworkConfig) -> dict:
     """
     Analyze parsed network traffic for suspicious patterns.
-
-    This function contains ONLY analysis logic.
-    It performs no file I/O and produces no output.
-
-    Args:
-        packets: List of parsed packet dictionaries.
-        config: NetworkConfig instance with detection thresholds.
-
-    Returns:
-        Dictionary containing analysis results.
     """
-    source_ips = {pkt.get("src_ip") for pkt in packets if "src_ip" in pkt}
+    logger = logging.getLogger("network_monitor")
+    logger.info("Starting traffic analysis")
 
+    source_ips = {pkt.get("src_ip") for pkt in packets if "src_ip" in pkt}
     port_scans = []
     syn_floods = []
 
     for src_ip in source_ips:
         if detect_port_scan(
-            packets,
-            src_ip,
-            config.port_scan_threshold
+            packets, src_ip, config.port_scan_threshold
         ):
+            logger.warning(
+                "Port scan detected from source IP %s",
+                src_ip
+            )
             port_scans.append(src_ip)
 
         if detect_syn_flood(
-            packets,
-            src_ip,
-            config.syn_flood_threshold
+            packets, src_ip, config.syn_flood_threshold
         ):
+            logger.warning(
+                "SYN flood detected from source IP %s",
+                src_ip
+            )
             syn_floods.append(src_ip)
+
+    logger.info("Traffic analysis complete")
 
     return {
         "total_packets": len(packets),
         "port_scans": port_scans,
         "syn_floods": syn_floods,
-    }    
+    }
 def main(args) -> int:
     """
     Main orchestration function.
-
-    This function coordinates file loading, traffic analysis,
-    and result reporting. It does not contain detection logic
-    or parsing logic itself.
-
-    Args:
-        args: An object containing input parameters. This will
-              be an argparse.Namespace in later stages.
-
-    Returns:
-        Integer exit code:
-            0 - Success
-            1 - User error (e.g. bad input)
-            2 - Unexpected program error
     """
     try:
-        # Build configuration from arguments
+        logger = setup_logging(
+            log_level=getattr(args, "log_level", "INFO")
+        )
+        logger.info("Network Monitor starting")
+
         config = NetworkConfig(
             port_scan_threshold=getattr(args, "port_scan_threshold", None),
             syn_flood_threshold=getattr(args, "syn_flood_threshold", None)
         )
 
-        # Load and parse traffic data
         packets = load_traffic_log(args.input_file)
-
-        # Analyze traffic
         results = analyze_traffic(packets, config)
 
-        # User-facing summary (temporary; replaced by logging later)
-        print("Analysis complete")
-        print(f"Total packets analyzed: {results['total_packets']}")
-        print(f"Port scans detected: {len(results['port_scans'])}")
-        print(f"SYN floods detected: {len(results['syn_floods'])}")
+        logger.info(
+            "Analysis summary: packets=%d, port_scans=%d, syn_floods=%d",
+            results["total_packets"],
+            len(results["port_scans"]),
+            len(results["syn_floods"])
+        )
 
         return 0
 
     except (FileNotFoundError, PermissionError, ValueError) as exc:
-        print(f"ERROR: {exc}")
+        logging.getLogger("network_monitor").error(
+            "User error: %s", exc
+        )
         return 1
 
-    except Exception as exc:
-        print(f"FATAL ERROR: {exc}")
+    except Exception:
+        logging.getLogger("network_monitor").exception(
+            "Fatal program error"
+        )
         return 2
-    
