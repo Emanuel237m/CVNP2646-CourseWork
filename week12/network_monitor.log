@@ -1,0 +1,32 @@
+2026-04-16 19:35:42,087 - network_monitor - INFO - Network Monitor starting
+2026-04-16 19:35:42,087 - network_monitor - INFO - Loading traffic log: C:\Users\jv3673ph\AppData\Local\Temp\pytest-of-jv3673ph\pytest-0\test_main_success0\traffic.log
+2026-04-16 19:35:42,088 - network_monitor - DEBUG - Parsed packet: src=192.168.1.5 dst=10.0.0.1
+2026-04-16 19:35:42,088 - network_monitor - INFO - Successfully loaded 1 packets
+2026-04-16 19:35:42,088 - network_monitor - INFO - Starting traffic analysis
+2026-04-16 19:35:42,088 - network_monitor - INFO - Traffic analysis complete
+2026-04-16 19:35:42,089 - network_monitor - INFO - Analysis summary: packets=1, port_scans=0, syn_floods=0
+2026-04-16 19:38:44,202 - network_monitor - INFO - Network Monitor starting
+2026-04-16 19:38:44,202 - network_monitor - INFO - Loading traffic log: C:\Users\jv3673ph\AppData\Local\Temp\pytest-of-jv3673ph\pytest-1\test_main_success0\traffic.log
+2026-04-16 19:38:44,203 - network_monitor - DEBUG - Parsed packet: src=192.168.1.5 dst=10.0.0.1
+2026-04-16 19:38:44,203 - network_monitor - INFO - Successfully loaded 1 packets
+2026-04-16 19:38:44,203 - network_monitor - INFO - Starting traffic analysis
+2026-04-16 19:38:44,203 - network_monitor - INFO - Traffic analysis complete
+2026-04-16 19:38:44,204 - network_monitor - INFO - Analysis summary: packets=1, port_scans=0, syn_floods=0
+2026-04-16 19:51:28,339 - network_monitor - INFO - Network Monitor starting
+2026-04-16 19:51:28,339 - network_monitor - INFO - Loading traffic log: traffic_sample.log
+2026-04-16 19:51:28,340 - network_monitor - INFO - Successfully loaded 0 packets
+2026-04-16 19:51:28,340 - network_monitor - INFO - Starting traffic analysis
+2026-04-16 19:51:28,340 - network_monitor - INFO - Traffic analysis complete
+2026-04-16 19:51:28,340 - network_monitor - INFO - Analysis summary: packets=0, port_scans=0, syn_floods=0
+2026-04-16 19:51:46,424 - network_monitor - INFO - Network Monitor starting
+2026-04-16 19:51:46,424 - network_monitor - INFO - Loading traffic log: traffic_sample.log
+2026-04-16 19:51:46,425 - network_monitor - INFO - Successfully loaded 0 packets
+2026-04-16 19:51:46,425 - network_monitor - INFO - Starting traffic analysis
+2026-04-16 19:51:46,425 - network_monitor - INFO - Traffic analysis complete
+2026-04-16 19:51:46,426 - network_monitor - INFO - Analysis summary: packets=0, port_scans=0, syn_floods=0
+2026-04-16 19:52:11,123 - network_monitor - INFO - Network Monitor starting
+2026-04-16 19:52:11,123 - network_monitor - INFO - Loading traffic log: traffic_sample.log
+2026-04-16 19:52:11,124 - network_monitor - INFO - Successfully loaded 0 packets
+2026-04-16 19:52:11,124 - network_monitor - INFO - Starting traffic analysis
+2026-04-16 19:52:11,124 - network_monitor - INFO - Traffic analysis complete
+2026-04-16 19:52:11,125 - network_monitor - INFO - Analysis summary: packets=0, port_scans=0, syn_floods=0

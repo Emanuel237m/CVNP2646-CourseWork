@@ -1,3 +1,4 @@
+import json
 import argparse
 import sys
 from pathlib import Path
@@ -183,9 +184,6 @@ def detect_syn_flood(packets: list, src_ip: str, threshold: int) -> bool:
     return syn_count > threshold
     
 def load_traffic_log(filepath: str) -> list:
-    """
-    Load and parse a network traffic log file.
-    """
     logger = logging.getLogger("network_monitor")
     packets = []
 
@@ -195,27 +193,23 @@ def load_traffic_log(filepath: str) -> list:
         for line_number, line in enumerate(file, start=1):
             line = line.strip()
 
-            if not line:
+            if not line or line.startswith("#"):
                 continue
 
             try:
                 packet = parse_packet_line(line)
                 packets.append(packet)
-                logger.debug(
-                    "Parsed packet: src=%s dst=%s",
-                    packet["src_ip"],
-                    packet["dst_ip"]
-                )
             except ValueError as exc:
                 logger.error(
-                    "Parse error at line %d: %s",
+                    "Skipping malformed line %d: %s",
                     line_number,
                     exc
                 )
-                raise
+                continue
 
-    logger.info("Successfully loaded %d packets", len(packets))
+    logger.info("Loaded %d valid packets", len(packets))
     return packets
+
 def analyze_traffic(packets: list, config: NetworkConfig) -> dict:
     """
     Analyze parsed network traffic for suspicious patterns.
@@ -253,6 +247,20 @@ def analyze_traffic(packets: list, config: NetworkConfig) -> dict:
         "port_scans": port_scans,
         "syn_floods": syn_floods,
     }
+def write_results_to_json(results: dict, output_path) -> None:
+    """
+    Write analysis results to a JSON file.
+
+    Args:
+        results: Analysis results dictionary.
+        output_path: Path to output JSON file.
+    """
+    logger = logging.getLogger("network_monitor")
+
+    with open(output_path, "w", encoding="utf-8") as file:
+        json.dump(results, file, indent=4)
+
+    logger.info("Results written to %s", output_path)
 
 def create_parser() -> argparse.ArgumentParser:
     """
@@ -364,8 +372,12 @@ def main(args) -> int:
             syn_flood_threshold=getattr(args, "syn_flood_threshold", None)
         )
 
+        # Load and analyze traffic
         packets = load_traffic_log(args.input_file)
         results = analyze_traffic(packets, config)
+
+        # ✅ SAFE: results is guaranteed to exist here
+        write_results_to_json(results, args.output)
 
         logger.info(
             "Analysis summary: packets=%d, port_scans=%d, syn_floods=%d",

@@ -133,6 +133,63 @@ def test_analyze_empty_traffic(sample_config):
     assert results["total_packets"] == 0
     assert results["port_scans"] == []
     assert results["syn_floods"] == []
+
+   
+
+    # Required positional argument
+    parser.add_argument(
+        "input_file",
+        type=Path,
+        help="Path to network traffic log (CSV format)",
+    )
+
+    # Optional arguments
+    parser.add_argument(
+        "--output", "-o",
+        type=Path,
+        default=Path("results.json"),
+        help="Output file for results (default: results.json)",
+    )
+
+    parser.add_argument(
+        "--port-scan-threshold", "-p",
+        type=int,
+        default=NetworkConfig.DEFAULT_PORT_SCAN_THRESHOLD,
+        metavar="N",
+        help="Port scan threshold (default: 25)",
+    )
+
+    parser.add_argument(
+        "--syn-flood-threshold", "-s",
+        type=int,
+        default=NetworkConfig.DEFAULT_SYN_FLOOD_THRESHOLD,
+        metavar="N",
+        help="SYN flood threshold (default: 100)",
+    )
+
+    parser.add_argument(
+        "--log-level",
+        choices=["DEBUG", "INFO", "WARNING", "ERROR"],
+        default="INFO",
+        help="Logging verbosity (default: INFO)",
+    )
+
+    parser.add_argument(
+        "--verbose", "-v",
+        action="store_true",
+        help="Enable verbose output (sets log level to DEBUG)",
+    )
+
+    parser.add_argument(
+        "--version",
+        action="version",
+        version="Network Monitor 1.0.0",
+    )
+
+    return parser
+
+
+
 def test_main_success(tmp_path):
     """main() returns 0 on success."""
     traffic_file = tmp_path / "traffic.log"
