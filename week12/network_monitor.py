@@ -1,3 +1,7 @@
+import argparse
+import sys
+from pathlib import Path
+
 import logging
 def setup_logging(
     log_file: str = "network_monitor.log",
@@ -249,6 +253,102 @@ def analyze_traffic(packets: list, config: NetworkConfig) -> dict:
         "port_scans": port_scans,
         "syn_floods": syn_floods,
     }
+
+def create_parser() -> argparse.ArgumentParser:
+    """
+    Create and configure the command-line argument parser.
+
+    Returns:
+        Configured ArgumentParser instance.
+    """
+    parser = argparse.ArgumentParser(
+        description="Network Traffic Monitor - Detect suspicious patterns",
+        epilog="Example: network_monitor.py traffic.log -o results.json -v",
+    )
+
+    # Required positional argument
+    parser.add_argument(
+        "input_file",
+        type=Path,
+        help="Path to network traffic log (CSV format)",
+    )
+
+    # Optional arguments
+    parser.add_argument(
+        "--output", "-o",
+        type=Path,
+        default=Path("results.json"),
+        help="Output file for results (default: results.json)",
+    )
+
+    parser.add_argument(
+        "--port-scan-threshold", "-p",
+        type=int,
+        default=NetworkConfig.DEFAULT_PORT_SCAN_THRESHOLD,
+        metavar="N",
+        help="Port scan threshold (default: 25)",
+    )
+
+    parser.add_argument(
+        "--syn-flood-threshold", "-s",
+        type=int,
+        default=NetworkConfig.DEFAULT_SYN_FLOOD_THRESHOLD,
+        metavar="N",
+        help="SYN flood threshold (default: 100)",
+    )
+
+    parser.add_argument(
+        "--log-level",
+        choices=["DEBUG", "INFO", "WARNING", "ERROR"],
+        default="INFO",
+        help="Logging verbosity (default: INFO)",
+    )
+
+    parser.add_argument(
+        "--verbose", "-v",
+        action="store_true",
+        help="Enable verbose output (sets log level to DEBUG)",
+    )
+
+    parser.add_argument(
+        "--version",
+        action="version",
+        version="Network Monitor 1.0.0",
+    )
+
+    return parser
+def validate_args(args: argparse.Namespace) -> None:
+    """
+    Validate command-line arguments.
+
+    Raises:
+        FileNotFoundError: If input file does not exist.
+        ValueError: If arguments are invalid.
+    """
+    # Check input file exists
+    if not args.input_file.exists():
+        raise FileNotFoundError(
+            f"Input file not found: {args.input_file}"
+        )
+
+    # Check input path is a file
+    if not args.input_file.is_file():
+        raise ValueError(
+            f"Input path is not a file: {args.input_file}"
+        )
+
+    # Validate thresholds
+    if args.port_scan_threshold < 1:
+        raise ValueError("Port scan threshold must be positive")
+
+    if args.syn_flood_threshold < 1:
+        raise ValueError("SYN flood threshold must be positive")
+
+    # Verbose overrides log level
+    if args.verbose:
+        args.log_level = "DEBUG"
+
+
 def main(args) -> int:
     """
     Main orchestration function.
@@ -287,3 +387,35 @@ def main(args) -> int:
             "Fatal program error"
         )
         return 2
+    
+def cli_main() -> int:
+    """
+    Command-line entry point.
+
+    Returns:
+        Exit code:
+            0 = success
+            1 = user error
+            2 = program error
+    """
+    parser = create_parser()
+    args = parser.parse_args()
+
+    try:
+        validate_args(args)
+        return main(args)
+
+    except FileNotFoundError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
+
+    except ValueError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
+
+    except Exception as exc:
+        print(f"FATAL: {exc}", file=sys.stderr)
+        return 2
+    
+if __name__ == "__main__":
+    sys.exit(cli_main())
