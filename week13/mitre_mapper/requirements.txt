@@ -1,0 +1,141 @@
+Week 14 Implementation Checkpoint
+Project: Malware Behavior to MITRE ATT&CK Technique Mapper
+Student: Emmanuel O. Akingbasote
+Week: 14 – Implementation Phase (Make It Work)
+
+1. What Works
+The core functionality of the Malware Behavior to MITRE ATT&CK Technique Mapper is working end‑to‑end.
+✅ JSON Input Processing
+
+The tool successfully reads a structured JSON input file containing malware sample metadata and observed behaviors.
+Each observed behavior is correctly parsed and instantiated as an ObservedBehavior object.
+The input schema matches the proposal design and sample data exactly.
+
+✅ Core Class Implementation
+
+The ObservedBehavior class represents individual malware behaviors and normalizes timestamps.
+The AttackTechniqueMapper class implements rule‑based logic to map observed behaviors to MITRE ATT&CK techniques.
+Mapping rules successfully identify:
+
+Process injection–related API calls (CreateRemoteThread, VirtualAllocEx) → T1055
+Registry Run key modification → T1547.001
+Outbound network connections → T1071
+
+
+
+✅ Processing Logic
+
+Observed behaviors are analyzed sequentially.
+Matched techniques are collected into a tagged results list.
+Technique frequency is calculated correctly across all behaviors.
+
+✅ JSON Output Generation
+
+The tool writes a structured JSON output report containing:
+
+Sample ID
+Analysis timestamp
+Tagged behaviors with confidence scores
+Technique frequency summary
+Overall analysis summary statistics
+
+
+Output format matches the provided example and is suitable for reporting.
+
+✅ Command‑Line Interface (CLI)
+
+The tool runs from the command line using argparse.
+Required arguments (--input, --output) are validated correctly.
+The --verbose flag enables detailed debug logging.
+
+✅ Logging and Error Handling
+
+Logging clearly reports major stages of execution (loading input, analysis, output writing).
+Errors such as missing input files are handled gracefully without crashing.
+The tool exits cleanly with meaningful error messages when failures occur.
+
+✅ The program can be demonstrated end‑to‑end in under two minutes.
+
+2. What’s Missing (Planned for Week 15)
+The following features are intentionally deferred to maintain a Week 14 MVP scope:
+
+Advanced correlation logic
+
+Behaviors are mapped independently; temporal correlation is not yet implemented.
+
+
+Dynamic confidence scoring
+
+Confidence values are currently fixed per rule.
+
+
+Multiple technique mappings per behavior
+
+Each behavior maps to a single primary ATT&CK technique in the MVP.
+
+
+ATT&CK Navigator export
+
+Output is JSON only; visual mapping will be added later.
+
+
+Expanded rule set
+
+Only key techniques are implemented to validate the pipeline.
+
+
+
+These gaps are known, documented, and planned for Week 15 polishing.
+
+3. Changes from Proposal
+Several minor, intentional adjustments were made during implementation:
+
+Simplified rule‑based mapping
+
+The proposal allowed for configurable rules; Week 14 focuses on hard‑coded rules to ensure a working MVP.
+
+
+Focused scope
+
+The original design mentioned multiple behavior categories; implementation started with the most representative behaviors.
+
+
+Output refinement
+
+Technique frequency counting was added during implementation to improve analytical value.
+
+
+
+These changes were made to prioritize an end‑to‑end working system rather than over‑engineering early.
+
+4. AI Usage This Week
+AI tools (ChatGPT / Copilot) were used responsibly to support development.
+✅ How AI Was Used
+
+Assisted in:
+
+Designing clean class structures
+Drafting initial rule‑based mapping logic
+Refining argparse and logging configuration
+
+
+Generated example code snippets that were reviewed and adapted.
+
+✅ How AI Suggestions Were Verified
+
+All generated code was manually reviewed.
+Logic was tested using the provided sample JSON files.
+Output was validated against expected results.
+AI‑generated suggestions that added unnecessary complexity were rejected.
+
+The final implementation reflects deliberate design decisions made by the student, with AI used as a support tool rather than a substitute for understanding.
+
+✅ Summary
+This Week 14 submission delivers a complete, functional MVP that:
+
+Implements the core concept from the proposal
+Runs cleanly from the command line
+Processes real input and produces meaningful output
+Is clearly explainable and extensible
+
+The project is well‑positioned for Week 15 refinement and enhancement.
