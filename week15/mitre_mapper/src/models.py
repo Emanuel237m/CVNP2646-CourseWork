@@ -51,7 +51,7 @@ class AttackTechniqueMapper:
         self.behaviors.append(behavior)
 
     def map_behaviors(self):
-        """
+        """ 
         Apply rule-based mappings to all behaviors.
         Returns:
           - tagged behaviors list
@@ -62,13 +62,18 @@ class AttackTechniqueMapper:
 
         for behavior in self.behaviors:
             result = self._map_single_behavior(behavior)
+
             if result:
-                tagged.append(result)
-                for tech in result["mapped_techniques"]:
-                    frequency[tech] = frequency.get(tech, 0) + 1
+                tagged.append(result)         
+            else:
+                tagged.append({
+                    "behavior": behavior.value,
+                    "mapped_techniques": [],
+                    "confidence": 0.0,
+                    "mapping_status": "unmapped"
+                })
 
         return tagged, frequency
-
     def _map_single_behavior(self, behavior):
         """
         Map a single behavior to ATT&CK techniques.
@@ -88,7 +93,6 @@ class AttackTechniqueMapper:
 
     @staticmethod
     def _normalize_behavior_name(behavior):
-        """Produce human-readable behavior labels"""
         if behavior.behavior_type == "registry_modification":
             return "Registry Run Key Modification"
         if behavior.behavior_type == "network_connection":

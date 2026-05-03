@@ -1,3 +1,17 @@
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+REQUIRED_PATHS = ["models.py", "utils.py"]
+for file in REQUIRED_PATHS:
+    if not os.path.isfile(file):
+        raise RuntimeError(f"Required file missing: {file}")
+
+
+
+
+
 """
 Malware Behavior to MITRE ATT&CK Technique Mapper
 
@@ -104,8 +118,8 @@ def main():
         sys.exit(1)
 
     except Exception as exc:
-        logging.error("Fatal error during processing: %s", exc)
-        sys.exit(1)
+        logging.error("Analysis failed: %s", exc)
+        sys.exit("ERROR: Analysis failed. Run with --verbose for details.")
 
 
 if __name__ == "__main__":

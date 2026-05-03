@@ -1,0 +1,46 @@
+{
+  "sample_id": "MAL-2024-001",
+  "analysis_timestamp": "2026-05-03T20:55:57.001700Z",
+  "tagged_behaviors": [
+    {
+      "behavior": "CreateRemoteThread",
+      "mapped_techniques": [
+        "T1055"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "behavior": "Registry Run Key Modification",
+      "mapped_techniques": [
+        "T1547.001"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "behavior": "Outbound Network Connection",
+      "mapped_techniques": [
+        "T1071"
+      ],
+      "confidence": 0.75
+    },
+    {
+      "behavior": "VirtualAllocEx",
+      "mapped_techniques": [
+        "T1055"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "behavior": "Outbound Network Connection",
+      "mapped_techniques": [
+        "T1071"
+      ],
+      "confidence": 0.75
+    }
+  ],
+  "technique_frequency": {},
+  "summary": {
+    "total_behaviors_analyzed": 5,
+    "unique_techniques_detected": 0
+  }
+}

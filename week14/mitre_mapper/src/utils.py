@@ -46,7 +46,11 @@ def load_behaviors_from_file(filepath):
         logging.debug("Parsing input JSON structure")
 
 from datetime import datetime
+if "observed_behaviors" not in data:
+    raise KeyError("Missing 'observed_behaviors' field in input JSON")
 
+if not isinstance(data["observed_behaviors"], list):
+    raise TypeError("'observed_behaviors' must be a list")
 
 def save_results_to_file(
     sample_id,

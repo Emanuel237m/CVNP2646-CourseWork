@@ -1,9 +1,6 @@
-"""
-Utility functions for JSON input/output
-"""
-
 import json
 import logging
+from datetime import datetime
 from models import ObservedBehavior
 
 
@@ -17,11 +14,25 @@ def load_behaviors_from_file(filepath):
         with open(filepath, "r") as f:
             data = json.load(f)
 
+        # ✅ Validation
+        if "observed_behaviors" not in data:
+            raise KeyError("Missing 'observed_behaviors' field in input JSON")
+
+        if not isinstance(data["observed_behaviors"], list):
+            raise TypeError("'observed_behaviors' must be a list")
+
         metadata = data.get("sample_metadata", {})
         raw_behaviors = data.get("observed_behaviors", [])
 
         behaviors = []
+        required_fields = {"type", "value", "timestamp"}
+
         for item in raw_behaviors:
+            if not required_fields.issubset(item):
+                raise KeyError(
+                    f"Behavior missing required fields: {required_fields - item.keys()}"
+                )
+
             behavior = ObservedBehavior(
                 behavior_type=item["type"],
                 value=item["value"],
@@ -29,23 +40,16 @@ def load_behaviors_from_file(filepath):
             )
             behaviors.append(behavior)
 
-        logging.info(f"Loaded {len(behaviors)} behaviors from {filepath}")
+        logging.info("Loaded %d behaviors from %s", len(behaviors), filepath)
         return metadata, behaviors
 
     except FileNotFoundError:
-        logging.error(f"Input file not found: {filepath}")
+        logging.error("Input file not found: %s", filepath)
         raise
 
     except json.JSONDecodeError as e:
-        logging.error(f"Invalid JSON format: {e}")
+        logging.error("Invalid JSON format: %s", e)
         raise
-
-    except KeyError as e:
-        logging.error(f"Missing required field in JSON: {e}")
-        raise
-        logging.debug("Parsing input JSON structure")
-
-from datetime import datetime
 
 
 def save_results_to_file(
@@ -58,8 +62,6 @@ def save_results_to_file(
     """
     Save analysis results to a JSON file in report format.
     """
-    logging.debug("Writing %d tagged behaviors to output",
-              len(tagged_behaviors))
     output_data = {
         "sample_id": sample_id,
         "analysis_timestamp": datetime.utcnow().isoformat() + "Z",
@@ -75,8 +77,8 @@ def save_results_to_file(
         with open(output_filepath, "w") as f:
             json.dump(output_data, f, indent=2)
 
-        logging.info(f"Results written to {output_filepath}")
+        logging.info("Results written to %s", output_filepath)
 
     except IOError as e:
-        logging.error(f"Failed to write output file: {e}")
+        logging.error("Failed to write output file: %s", e)
         raise

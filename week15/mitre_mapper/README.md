@@ -33,17 +33,16 @@ JSON{  "sample_id": "MAL-2024-001",  "tagged_behaviors": [    {      "behavior":
 
 ▶️ How to Run
 ✅ Windows (Recommended)
-Use the official Python launcher:
-PowerShellpy src/main.py --input data/input_sample.json --output data/test_output.jsonShow more lines
+1. Install Dependencies  & 2. Run the malware behavior mapper
+  (1). py -m pip install -r requirements.txt
+  (2). Be in the /src folder then run:  py main.py --input ../data/input_sample.json --output ../data/test_output.json
 
 ✅ macOS / Linux
-Shellpython3 src/main.py --input data/input_sample.json --output data/test_output.jsonShow more lines
-
+1. Install Dependencies  & 2. Run the malware behavior mapper
+  (1). python3 -m pip install -r requirements.txt
+  (2). cd src
+       python3 main.py --input ../data/input_sample.json --output ../data/test_output.json
 ✅ Verbose Logging (Optional)
-Shellpy src/main.py --input data/input_sample.json --output data/test_output.json --verbose``Show more lines
-
-🛠️ Key Mappings (MVP Ruleset)
-
 
 🔍 Skills Demonstrated
 
@@ -71,11 +70,3 @@ It does not execute malware or perform offensive actions.
 📌 One‑Line Summary (for GitHub description)
 
 Rule‑based malware behavior analysis tool that maps observed actions to MITRE ATT&CK techniques using explainable detection logic.
-
-## 🧪 Running Tests
-
-This project uses pytest.
-
-```bash
-pip install pytest
-pytest
