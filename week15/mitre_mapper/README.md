@@ -14,12 +14,12 @@ Easy to extend
 
 🧠 What the Tool Does
 
-Reads observed malware behaviors from JSON
-Normalizes and models behaviors
-Maps behaviors to MITRE ATT&CK techniques
-Assigns confidence scores per mapping
-Aggregates technique frequency
-Outputs a structured analysis report in JSON
+//Reads observed malware behaviors from JSON//
+//Normalizes and models behaviors//
+//Maps behaviors to MITRE ATT&CK techniques//
+//Assigns confidence scores per mapping//
+//Aggregates technique frequency//
+//Outputs a structured analysis report in JSON//
 
 
 📂 Project Structure
